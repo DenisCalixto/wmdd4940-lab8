@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 UrlItem item = (UrlItem) adapter.getItemAtPosition(position);
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 intent.putExtra("url", item.url);
+
+                Log.d(TAG, item.url);
                 startActivity(intent);
             }
         });
@@ -102,11 +104,9 @@ public class MainActivity extends AppCompatActivity {
                     //operators.add(operator);
 
                     UrlItem item = new UrlItem();
-                    item.url = businessURL;
+                    item.url = businessURL.replace("http", "https");
                     item.operator = operator;
                     itemsArrayList.add(item);
-
-                    Log.d(TAG, operator);
                 }
 
                 urlListAdapter = new UrlListAdapter(MainActivity.this, itemsArrayList);
